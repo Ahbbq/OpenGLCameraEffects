@@ -8,6 +8,8 @@ struct Event {
         BACKWARD,
         LEFT,
         RIGHT,
+        UP,
+        DOWN,
         ZOOM,
         RESET_TEST_CAM,
         EVENTCOUNT

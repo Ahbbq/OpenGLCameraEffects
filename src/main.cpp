@@ -42,6 +42,8 @@ std::map<int, EventValue> keyMap = {
     { GLFW_KEY_S, {Event::BACKWARD } },
     { GLFW_KEY_A, {Event::LEFT } },
     { GLFW_KEY_D, {Event::RIGHT } },
+    { GLFW_KEY_E, {Event::UP } },
+    { GLFW_KEY_Q, {Event::DOWN } },
     { GLFW_KEY_R, {Event::RESET_TEST_CAM } },
 };
 

@@ -23,8 +23,8 @@
 class DemoScene : public Scene {
     
     Shader &gShader = getGBufferShader();
-    Model bokehTest = { platformPath("assets/test/test.obj") };
-    Model model = { platformPath("assets/littlest_tokyo/scene.obj") };
+    Model bokehTest = { platformPath("../assets/test/test.obj") };
+    Model model = { platformPath("../assets/littlest_tokyo/scene.obj") };
     Quad billboard;
     Shader& dofSimpleShader = getDofShaderSimple();
     Shader& dofAdvancedShader = getDOFShaderAdvanced();
@@ -195,6 +195,7 @@ public:
         ImGui::RadioButton("Bokeh Test", &currentModel, 1);
         
         if (ImGui::CollapsingHeader("Camera Settings"), ImGuiTreeNodeFlags_DefaultOpen) {
+            // 传感器设置
             if (ImGui::TreeNode("Sensor Settings")) {
                 ImGui::SliderFloat("Aspect Ratio", &camera.aspectRatio, 0.1f, 4.f);
                 helpMaker("Aspect ratio to simulate effects of a round lens");
@@ -210,7 +211,7 @@ public:
                 }
                 ImGui::TreePop();
             }
-
+            // 镜头设置
             if (ImGui::TreeNode("Lens Settings")) {
                 ImGui::SliderFloat("Focal Length", &camera.focalLength, 0.004f, 0.300f);
                 ImGui::SliderFloat(

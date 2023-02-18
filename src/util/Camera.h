@@ -6,9 +6,9 @@
 class Camera {
 public:
 
-    float focalLength = 0.050f; // meter
+    float focalLength = 0.050f; // meter      // 焦距
     float focusDistance = 14.f; // meter
-    float aperture = 1.4f; // ratio
+    float aperture = 1.4f; // ratio           // 孔径
     int dofSamples = 64;
 
     int apertureBlades = 5;
@@ -17,7 +17,7 @@ public:
 
     float vignetteStrength = 0.2f;
     float vignetteFalloff = 3.0f;
-    float aspectRatio = 1.f;
+    float aspectRatio = 1.f;                  // 横纵比
     float vignetteDesaturation = 0.f;
 
     float dispersionStrength = 0.f;
@@ -27,14 +27,14 @@ public:
 
     float sensorSize = 0.035f; // meter
     float sensorCrop = 0.f; // ratio
-    float resolutionScale = 1.f; // ratio
+    float resolutionScale = 1.f; // ratio   // 调整分辨率
     float nearPlane = 0.1f; // meter
     float farPlane = 50.f; // meter
 
     float grain = 0.0;
     float grainSize = 1.0;
 
-    float exposure = 1.0;
+    float exposure = 1.0;                   // 曝光值
     
     // Camera Attributes
     glm::vec3 position, up, right;
@@ -79,7 +79,14 @@ public:
             if (i.type == Event::RIGHT) {
                 position += right * velocity;
                 i.handled = true;
-            } else
+            } else if (i.type == Event::UP) {
+                position += worldUp * velocity;
+                i.handled = true;
+            } else if (i.type == Event::DOWN) {
+                position -= worldUp * velocity;
+                i.handled = true;
+            }
+            else
             if (i.type == Event::ZOOM) {
                 // fieldOfView -= i.x;
                 // fieldOfView = clamp(fieldOfView, 1.f, 180.f);
